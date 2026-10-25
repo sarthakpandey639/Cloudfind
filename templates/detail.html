@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }}{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('index') }}">← Back to listings</a>
+<div class="detail-layout">
+  <div class="detail-photo">{% if item.image_filename %}<img src="{{ url_for('uploaded_file', filename=item.image_filename) }}" alt="{{ item.title }}">{% else %}<div class="placeholder-art art-2"><span>◇</span><small>{{ item.category }}</small></div>{% endif %}</div>
+  <div class="detail-info"><span class="type-pill {{ item.item_type|lower }}">{{ item.item_type }}</span><h1>{{ item.title }}</h1><p class="location">⌖ {{ item.location }}</p><p>{{ item.description }}</p><div class="detail-facts"><div><small>Category</small><strong>{{ item.category }}</strong></div><div><small>Date reported</small><strong>{{ item.item_date }}</strong></div><div><small>Status</small><strong>{{ item.status }}</strong></div></div><div class="contact-box"><small>Contact</small><strong>{{ item.contact }}</strong><p>For a real deployment, avoid exposing contact details publicly; use a private claim workflow.</p></div><form method="post" action="{{ url_for('update_status', item_id=item.id) }}"><input type="hidden" name="status" value="{% if item.status=='Open' %}Returned{% else %}Open{% endif %}"><button class="button button-dark" type="submit">{% if item.status=='Open' %}Mark as returned{% else %}Reopen listing{% endif %}</button></form></div>
+</div>
+{% endblock %}

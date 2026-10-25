@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CloudFind{% endblock %} · Campus Lost & Found</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('index') }}"><span class="brand-icon">C</span><span>CloudFind<small>Campus Lost & Found</small></span></a>
+  <nav><a href="{{ url_for('index') }}">Browse items</a><a class="nav-cta" href="{{ url_for('report') }}">+ Report item</a></nav>
+</header>
+<main class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-list">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+  <footer><span>CloudFind · College Mini Project</span><span>Prototype running locally</span></footer>
+</main>
+</body>
+</html>

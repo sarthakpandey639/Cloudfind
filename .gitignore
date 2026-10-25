@@ -1,0 +1,22 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets and environment settings
+.env
+.env.*
+!.env.example
+
+# Local database and backups
+cloudfind.db
+cloudfind.db-*
+backups/
+
+# Uploaded files (photos are stored in S3 for new uploads)
+uploads/
+
+# Editor files
+.vscode/

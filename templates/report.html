@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Report an item{% endblock %}
+{% block content %}
+<div class="page-intro"><div class="eyebrow dark">HELP YOUR CAMPUS COMMUNITY</div><h1>Report an item</h1><p>Share the details so the right person can find it.</p></div>
+<form class="report-form" method="post" enctype="multipart/form-data">
+  <div class="form-row"><label>Item name *<input name="title" required placeholder="e.g. Black backpack"></label><label>Report type *<select name="item_type" required><option value="Lost">I lost this</option><option value="Found">I found this</option></select></label></div>
+  <div class="form-row"><label>Category *<select name="category" required><option>Electronics</option><option>Bags</option><option>Accessories</option><option>Books & stationery</option><option>Clothing</option><option>Other</option></select></label><label>Date *<input name="item_date" type="date" required></label></div>
+  <label>Campus location *<input name="location" required placeholder="e.g. Library, lab 204, canteen"></label>
+  <label>Description *<textarea name="description" rows="4" required placeholder="Add identifying details, colour, brand, or other useful information"></textarea></label>
+  <label>Contact email *<input name="contact" type="email" required placeholder="you@example.com"></label>
+  <label>Photo (optional)<input name="image" type="file" accept=".png,.jpg,.jpeg,.gif,.webp"><small class="hint">Maximum 5 MB. Images are stored locally in this zero-cost prototype.</small></label>
+  <div class="form-actions"><a class="clear-link" href="{{ url_for('index') }}">Cancel</a><button class="button button-dark" type="submit">Submit report →</button></div>
+</form>
+{% endblock %}
